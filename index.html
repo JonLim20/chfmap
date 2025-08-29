@@ -22,54 +22,48 @@
         <title></title>
     
 <style id="embed-popup-overrides">
-/* Improve popup legibility inside iframes/embeds */
-.leaflet-popup-pane { z-index: 10000 !important; }
+/* Smaller popup styling */
 .leaflet-popup-content-wrapper {
-  max-width: min(92vw, 540px) !important; /* scale to iframe viewport */
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  max-width: min(46vw, 270px) !important; /* about half original */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 .leaflet-popup-content {
-  font-size: 16px;
-  line-height: 1.5;
-  max-height: min(75vh, 600px);
-  overflow: auto; /* scroll long content instead of overflow off-screen */
+  font-size: 13px;
+  line-height: 1.3;
+  max-height: min(37vh, 300px);
+  overflow: auto;
 }
 .leaflet-container a.leaflet-popup-close-button {
-  font-size: 22px; /* bigger tap target */
-  right: 10px;
-  top: 8px;
+  font-size: 18px;
+  right: 8px;
+  top: 6px;
 }
 .leaflet-popup-content table {
   width: 100%;
   table-layout: fixed;
 }
 .leaflet-popup-content td, .leaflet-popup-content th {
-  padding: 6px 8px;
+  padding: 4px 6px;
   vertical-align: top;
   word-break: break-word;
 }
 .leaflet-popup-content img, .leaflet-popup-content video {
-  max-width: 100%;
+  max-width: 70%;  /* scale to 70% of container, ~30% smaller */
   height: auto;
   display: block;
-  margin: 6px 0;
-  border-radius: 6px;
-}
-@media (max-width: 600px) {
-  .leaflet-popup-content { font-size: 16px; }
-  .leaflet-popup-content-wrapper { max-width: 94vw !important; }
+  margin: 4px auto;
+  border-radius: 4px;
 }
 </style>
 
 
 <script id="embed-popup-script">
-// Make popups friendlier in embeds (responsive width/height, keepInView, padding)
 (function() {
   function sizePx() {
-    var w = Math.min(window.innerWidth * 0.92, 540);
-    var h = Math.min(window.innerHeight * 0.75, 600);
-    return {w: Math.max(280, Math.floor(w)), h: Math.max(280, Math.floor(h))};
+    var w = Math.min(window.innerWidth * 0.46, 270);
+    var h = Math.min(window.innerHeight * 0.37, 300);
+    return {w: Math.max(140, Math.floor(w)), h: Math.max(140, Math.floor(h))};
   }
   function applyDefaults() {
     if (window.L && L.Popup && L.Popup.prototype) {
@@ -77,11 +71,7 @@
       L.Popup.prototype.options.maxWidth = s.w;
       L.Popup.prototype.options.maxHeight = s.h;
       L.Popup.prototype.options.keepInView = true;
-      L.Popup.prototype.options.autoPanPaddingTopLeft = [20, 20];
-      L.Popup.prototype.options.autoPanPaddingBottomRight = [20, 20];
-      // Also make tooltips/popups use a higher z-index if theme overrides exist
     }
-    // Update any open popups' wrappers to current size
     document.querySelectorAll('.leaflet-popup-content-wrapper').forEach(function(el) {
       var s = sizePx();
       el.style.maxWidth = s.w + 'px';
@@ -213,7 +203,7 @@
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxHeight: 600, autoPanPaddingTopLeft: [20,20], autoPanPaddingBottomRight: [20,20], keepInView: true });
+			layer.bindPopup(content, { maxHeight: 300, keepInView: true });
         }
 
         function style_sitesv2_1_0() {
@@ -273,7 +263,7 @@
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxHeight: 600, autoPanPaddingTopLeft: [20,20], autoPanPaddingBottomRight: [20,20], keepInView: true });
+			layer.bindPopup(content, { maxHeight: 300, keepInView: true });
         }
 
         function style_continentpoints_2_0() {
