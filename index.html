@@ -20,7 +20,51 @@
         }
         </style>
         <title></title>
-    </head>
+    
+<style>
+
+/* ---- Custom overrides injected by ChatGPT ---- */
+/* Make popups ~30% smaller (Leaflet default is 300px max width).
+   We also ensure content wraps nicely. */
+.leaflet-popup-content {
+  max-width: 210px !important;
+  overflow-wrap: anywhere;
+}
+
+/* Fit images fully inside the popup without overflow */
+.leaflet-popup-content img,
+.leaflet-popup-content figure img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* If popup content uses iframes or videos, constrain them too */
+.leaflet-popup-content iframe,
+.leaflet-popup-content video {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* Dark grey continent name labels.
+   Applies to common qgis2web/Leaflet label containers. */
+.leaflet-tooltip,
+.qgis2web-label,
+.leaflet-marker-icon .label,
+.leaflet-div-icon,
+.leaflet-label {
+  color: #444 !important;
+  text-shadow: none !important;
+}
+
+/* If labels were styled via fill on SVG text (vector layers) */
+text, textPath {
+  fill: #444 !important;
+}
+
+</style>
+</head>
     <body>
         <div id="map">
         </div>
