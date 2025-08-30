@@ -54,8 +54,8 @@
             }
         }
         var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:1
-        })
+            zoomControl:false, maxZoom:28, minZoom:3
+        }).fitBounds([[-161.51418677503898,-373.2807677312826],[186.95127146303724,301.2393815694072]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -75,21 +75,6 @@
         }
         // add class to format popup if it contains media
 		function addClassToPopupIfMedia(content, popup) {
-            // Also tag copyright/credit rows for styling
-            try {
-                setTimeout(function() {
-                    var rows = popup && popup._contentNode ? popup._contentNode.querySelectorAll('tr') : [];
-                    rows.forEach(function(row){
-                        var th = row.querySelector('th');
-                        if (!th) return;
-                        var key = (th.textContent || '').trim().toLowerCase();
-                        if (key.includes('copyright') || key.includes('credit')) {
-                            row.classList.add('popup-copyright');
-                        }
-                    });
-                }, 0);
-            } catch (e) { /* no-op */ }
-        
 			var tempDiv = document.createElement('div');
 			tempDiv.innerHTML = content;
 			if (tempDiv.querySelector('td img')) {
@@ -107,11 +92,6 @@
         }).addTo(map);
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
-            map.setMaxBounds(map.getBounds());
-            map.setMinZoom(map.getZoom());
         }
         map.createPane('pane_Voyagernolabelsretina_0');
         map.getPane('pane_Voyagernolabelsretina_0').style.zIndex = 400;
@@ -119,7 +99,7 @@
             pane: 'pane_Voyagernolabelsretina_0',
             opacity: 1.0,
             attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
-            minZoom: 1,
+            minZoom: 3,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 20
@@ -155,7 +135,7 @@
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxWidth: 420, minWidth: 300, maxHeight: 400, autoPan: true, autoPanPaddingTopLeft: [20, 20], autoPanPaddingBottomRight: [20, 20] });
+			layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_sitesv2_1_0() {
@@ -215,7 +195,7 @@
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxWidth: 420, minWidth: 300, maxHeight: 400, autoPan: true, autoPanPaddingTopLeft: [20, 20], autoPanPaddingBottomRight: [20, 20] });
+			layer.bindPopup(content, { maxHeight: 400 });
         }
 
         function style_continentpoints_2_0() {
@@ -256,7 +236,7 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Continent'] !== null?String('<div style="color: #323232; font-size: 15pt; font-weight: bold; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Continent']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_continentpoints_2'});
+            layer.bindTooltip((layer.feature.properties['Continent'] !== null?String('<div style="color: #7a7a7a; font-size: 15pt; font-weight: bold; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Continent']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_continentpoints_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
