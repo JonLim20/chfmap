@@ -194,3 +194,113 @@
             justify-content: center;
             align-items: center;
         }
+
+/* === Popup image fit tweaks (added by assistant on 2025-08-30) === */
+.leaflet-popup-content {
+  overflow: auto; /* allow scrolling if needed without clipping */
+}
+
+.leaflet-popup-content img,
+.leaflet-popup-content td img {
+  max-width: 100% !important;  /* never exceed popup content width */
+  height: auto !important;     /* preserve aspect ratio */
+  max-height: 65vh;            /* prevent super-tall images from overflowing the viewport */
+  object-fit: contain;         /* fit neatly if constrained */
+  display: block;
+  margin: 0.25rem auto;        /* tiny breathing room */
+}
+/* === End popup image tweaks === */
+
+
+/* === Popup width normalization (added to prevent "skinny" popups) === */
+.leaflet-popup-content {
+  min-width: 300px;           /* ensure a reasonable baseline width */
+  max-width: 70vw;            /* keep previous viewport cap */
+}
+
+.leaflet-popup-content table {
+  width: 100%;                /* let table fill the popup width */
+  table-layout: auto;
+}
+/* === End width normalization === */
+
+
+/* === Popup width comfort (added by assistant on 2025-08-30) === */
+@media (min-width: 640px) {
+  .leaflet-popup-content-wrapper {
+    max-width: 520px; /* gives room beyond Leaflet's 300px default */
+  }
+}
+
+
+/* === Continent label colour override (lighter grey) === */
+.leaflet-tooltip,
+.leaflet-label {
+  color: #999 !important;   /* lighter grey */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+/* === Popup copyright notice styling === */
+.leaflet-popup-content .copyright,
+.leaflet-popup-content .attribution,
+.leaflet-popup-content .credit {
+  font-style: italic;
+  font-size: smaller;
+}
+
+
+/* === Continent label and copyright styling (added by assistant on 2025-08-30) === */
+/* Make continent label tooltips a lighter grey */
+.leaflet-tooltip.css_continentpoints_2 {
+  color: #888 !important;
+  font-weight: 600;            /* optional for clarity */
+}
+
+/* Style the copyright/credit line inside popups */
+.leaflet-popup-content .popup-copyright {
+  font-style: italic;
+  font-size: 0.9em;            /* slightly smaller than normal text */
+  opacity: 0.95;
+}
+/* === End continent/copyright styling === */
+
+
+/* === Stronger overrides for continent labels & copyright row (2025-08-30) === */
+/* Some tooltips inject inline color styles; override them forcefully */
+.leaflet-tooltip.css_continentpoints_2,
+.leaflet-tooltip.css_continentpoints_2 * {
+  color: #999 !important;      /* lighter grey */
+  text-shadow: none !important;
+}
+
+/* Make sure copyright/credit row is visibly styled even inside table cells */
+tr.popup-copyright,
+tr.popup-copyright * {
+  font-style: italic !important;
+  font-size: 0.9em !important;
+  opacity: 0.95;
+}
+/* === end === */
+
+
+/* === Final overrides for continent labels & copyright (2025-08-30) === */
+/* Force continent labels lighter grey */
+.leaflet-tooltip.css_continentpoints_2,
+.leaflet-tooltip.css_continentpoints_2 * {
+  color: #777 !important;      /* lighter grey (#777) */
+  text-shadow: none !important;
+}
+
+/* Ensure copyright/credit lines are italic & smaller */
+tr.popup-copyright,
+tr.popup-copyright *,
+.leaflet-popup-content .copyright,
+.leaflet-popup-content .credit,
+.leaflet-popup-content [id*="copyright"],
+.leaflet-popup-content [id*="credit"] {
+  font-style: italic !important;
+  font-size: 0.9em !important;
+  opacity: 0.95;
+}
+/* === end === */

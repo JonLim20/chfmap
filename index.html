@@ -20,52 +20,7 @@
         }
         </style>
         <title></title>
-    
-<style>
-
-
-
-</style>
-<style>
-
-/* ---- Custom overrides updated by ChatGPT ---- */
-/* Keep popups default size but ensure content fits nicely */
-.leaflet-popup-content {
-  max-width: 300px !important;
-  overflow-wrap: anywhere;
-}
-
-/* Fit images fully inside the popup without overflow */
-.leaflet-popup-content img,
-.leaflet-popup-content figure img {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-.leaflet-popup-content iframe,
-.leaflet-popup-content video {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-/* Lighter grey continent name labels. */
-.leaflet-tooltip,
-.qgis2web-label,
-.leaflet-marker-icon .label,
-.leaflet-div-icon,
-.leaflet-label {
-  color: #666 !important;
-  text-shadow: none !important;
-}
-
-text, textPath {
-  fill: #666 !important;
-}
-
-</style>
-</head>
+    </head>
     <body>
         <div id="map">
         </div>
@@ -120,6 +75,21 @@ text, textPath {
         }
         // add class to format popup if it contains media
 		function addClassToPopupIfMedia(content, popup) {
+            // Also tag copyright/credit rows for styling
+            try {
+                setTimeout(function() {
+                    var rows = popup && popup._contentNode ? popup._contentNode.querySelectorAll('tr') : [];
+                    rows.forEach(function(row){
+                        var th = row.querySelector('th');
+                        if (!th) return;
+                        var key = (th.textContent || '').trim().toLowerCase();
+                        if (key.includes('copyright') || key.includes('credit')) {
+                            row.classList.add('popup-copyright');
+                        }
+                    });
+                }, 0);
+            } catch (e) { /* no-op */ }
+        
 			var tempDiv = document.createElement('div');
 			tempDiv.innerHTML = content;
 			if (tempDiv.querySelector('td img')) {
@@ -185,7 +155,7 @@ text, textPath {
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxHeight: 400 });
+			layer.bindPopup(content, { maxWidth: 420, minWidth: 300, maxHeight: 400, autoPan: true, autoPanPaddingTopLeft: [20, 20], autoPanPaddingBottomRight: [20, 20] });
         }
 
         function style_sitesv2_1_0() {
@@ -245,7 +215,7 @@ text, textPath {
 			layer.on('popupopen', function(e) {
 				addClassToPopupIfMedia(content, e.popup);
 			});
-			layer.bindPopup(content, { maxHeight: 400 });
+			layer.bindPopup(content, { maxWidth: 420, minWidth: 300, maxHeight: 400, autoPan: true, autoPanPaddingTopLeft: [20, 20], autoPanPaddingBottomRight: [20, 20] });
         }
 
         function style_continentpoints_2_0() {
