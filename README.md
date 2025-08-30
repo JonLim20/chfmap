@@ -1,6 +1,6 @@
 What makes this work is the damn code at the end of css-> qgis2web file, see below
 
-/* === Popup image fit tweaks (added by assistant on 2025-08-30) === */
+/* === Popup image fit tweaks === */
 .leaflet-popup-content {
   overflow: auto; /* allow scrolling if needed without clipping */
 }
