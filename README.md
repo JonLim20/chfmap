@@ -1,4 +1,4 @@
-Apply these settings to the end of the index.html file if creating from scratch in QGIS2Web
+Apply these settings to the end of the qgis2web .css file if creating from scratch in QGIS2Web
 
 
 /* === Popup image fit tweaks === */
