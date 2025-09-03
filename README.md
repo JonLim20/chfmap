@@ -1,4 +1,5 @@
-What makes this work is the damn code at the end of css-> qgis2web file, see below
+Apply these settings to the end of the index.html file if creating from scratch in QGIS2Web
+
 
 /* === Popup image fit tweaks === */
 .leaflet-popup-content {
