@@ -56,7 +56,18 @@
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:3
         }).fitBounds([[-161.51418677503898,-373.2807677312826],[186.95127146303724,301.2393815694072]]);
-        var hash = new L.Hash(map);
+        
+
+// Added by ChatGPT: permanent "Updated" label bottom-right
+var updatedControl = L.control({ position: 'bottomright' });
+updatedControl.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'updated-text');
+    div.innerHTML = "Updated: September 2025";
+    return div;
+};
+updatedControl.addTo(map);
+// End ChatGPT addition
+var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"

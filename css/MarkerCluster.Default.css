@@ -58,3 +58,12 @@
 .marker-cluster span {
 	line-height: 30px;
 	}
+/* Added by ChatGPT: style for bottom-right updated label */
+.updated-text {
+    font-size: 12px;
+    font-style: italic;
+    color: #555;
+    padding: 3px 6px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+}
