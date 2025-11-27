@@ -1,6 +1,6 @@
 # Deleting or modifying recent additions to the map
 
-##![alt text](images/modifying.png)
+![alt text](images/modifying.png)
 
 # Adding links to the description
 
