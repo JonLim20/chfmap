@@ -2,6 +2,11 @@
 
 ![alt text](images/modifying.png)
 
+# Adding links to the description
+
+Adding links in the description should have the following syntax, fill in link and word to be hyperlinked as appropriate
+
+The Commonwealth Heritage Forum facilitated the delivery of the  <a href=\"https://www.brookes.ac.uk/research/units/tde/projects/endangered-wooden-architecture-programme\" target=\"_blank\" rel=\"\">EWAP</a>  (Endangered Wooden Architecture Programme) project in Freetown, Sierra Leone. EWAP supports the documentation of endangered wooden architecture across the world and is hosted by Oxford Brookes University
 
 # Don't worry about this unless making from scratch
 Apply these settings to the end of the qgis2web .css file if creating from scratch in QGIS2Web
