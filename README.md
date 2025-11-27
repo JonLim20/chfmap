@@ -1,3 +1,6 @@
+/images/modifying.png
+
+
 Apply these settings to the end of the qgis2web .css file if creating from scratch in QGIS2Web
 
 
