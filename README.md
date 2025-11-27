@@ -4,7 +4,7 @@
 
 # Adding links to the description
 
-Adding links in the description should have the following syntax, fill in link and word to be hyperlinked as appropriate
+Adding links in the description via the Google Collab script should have the following syntax, fill in link and word to be hyperlinked as appropriate
 
 The Commonwealth Heritage Forum facilitated the delivery of the  <a href=\"https://www.brookes.ac.uk/research/units/tde/projects/endangered-wooden-architecture-programme\" target=\"_blank\" rel=\"\">EWAP</a>  (Endangered Wooden Architecture Programme) project in Freetown, Sierra Leone. EWAP supports the documentation of endangered wooden architecture across the world and is hosted by Oxford Brookes University
 
