@@ -1,3 +1,6 @@
+# Where are the information for each point on the map stored?
+They are stored as a single block of text in data/sitesv2_1.js and can be directly modified from there. 
+
 # Deleting or modifying recent additions to the map
 
 ![alt text](images/modifying.png)
