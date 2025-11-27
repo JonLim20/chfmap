@@ -8,7 +8,7 @@ Adding links in the description via the Google Collab script should have the fol
 
 The Commonwealth Heritage Forum facilitated the delivery of the  <a href=\"https://www.brookes.ac.uk/research/units/tde/projects/endangered-wooden-architecture-programme\" target=\"_blank\" rel=\"\">EWAP</a>  (Endangered Wooden Architecture Programme) project in Freetown, Sierra Leone. EWAP supports the documentation of endangered wooden architecture across the world and is hosted by Oxford Brookes University
 
-# Don't worry about this unless making from scratch
+# Don't worry about this unless making from scratch in QGIS2WEB
 Apply these settings to the end of the qgis2web .css file if creating from scratch in QGIS2Web
 
 
