@@ -1,6 +1,9 @@
-/images/modifying.png
+# Deleting or modifying recent additions to the map
+
+![alt text](images/modifying.png)
 
 
+# Don't worry about this unless making from scratch
 Apply these settings to the end of the qgis2web .css file if creating from scratch in QGIS2Web
 
 
